@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      href="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/275854716_1009516859998712_3360791562563963516_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_ohc=Nd-x8LBVkfEAX-8j_3d&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfCE12FbrIzhS4MFFIpLnp91XXbAS27AcV3yTsAqHtNIHw&oe=640ADB19"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>APEC - Chúc mừng ngày 8 -3</title>
+  </head>
+
+  <style>
+    #snowflakeContainer {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    .snowflake {
+      padding-left: 15px;
+      font-size: 14px;
+      line-height: 24px;
+      position: fixed;
+      color: #fd6e6e;
+      user-select: none;
+      z-index: 1000;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .snowflake:hover {
+      cursor: default;
+    }
+  </style>
+
+  <body>
+    <div class="back-button" onclick="goBack()">Quay lại</div>
+
+    <div class="typewriter">
+      <h1>Happy Women's Day 8/3</h1>
+    </div>
+
+    <div class="wrapper">
+      <div class="box-header">
+        <div class="loader">
+          <div class="cardHover">
+            <div class="inner one" style="--i: 1"></div>
+            <div class="inner two" style="--i: 1"></div>
+            <div class="inner three" style="--i: 1"></div>
+            <div class="box-heart">
+              <div class="heart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="imagecontent">
+          <img />
+        </div>
+      </div>
+      <button></button>
+      <div class="content">
+        <i class="fa-solid fa-xmark"></i>
+        <h1>💞💗💞 Gửi! 💗</h1>
+        <p>
+          Ngày 8/3, chúc một nửa thế giới luôn thành công trong cuộc sống! Chúc
+          bạn luôn duyên dáng và xinh đẹp trong mắt một nửa thế giới còn lại!
+        </p>
+      </div>
+    </div>
+
+    <div class="departments-container" id="departmentsContainer"></div>
+
+    <div class="employees-container" id="employeesContainer"></div>
+
+    <div id="snowflakeContainer">
+      <p class="snowflake">❀✿</p>
+    </div>
+  </body>
+  <script type="text/javascript" src="vanilla-tilt.js"></script>
+  <!-- <script type="text/javascript" src="users.js"></script> -->
+  <script>
+    //<![CDATA[
+    var requestAnimationFrame =
+      window.requestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.msRequestAnimationFrame;
+    var transforms = [
+      "transform",
+      "msTransform",
+      "webkitTransform",
+      "mozTransform",
+      "oTransform",
+    ];
+    var transformProperty = getSupportedPropertyName(transforms);
+    var snowflakes = [];
+    var browserWidth;
+    var browserHeight;
+    var numberOfSnowflakes = 50;
+    var resetPosition = false;
+
+    function setup() {
+      window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+      window.addEventListener("resize", setResetFlag, false);
+    }
+    setup();
+
+    function getSupportedPropertyName(b) {
+      for (var a = 0; a < b.length; a++) {
+        if (typeof document.body.style[b[a]] != "undefined") {
+          return b[a];
+        }
+      }
+      return null;
+    }
+
+    function Snowflake(b, a, d, e, c) {
+      this.element = b;
+      this.radius = a;
+      this.speed = d;
+      this.xPos = e;
+      this.yPos = c;
+      this.counter = 0;
+      this.sign = Math.random() < 0.5 ? 1 : -1;
+      this.element.style.opacity = 0.5 + Math.random();
+      this.element.style.fontSize = 4 + Math.random() * 30 + "px";
+    }
+    Snowflake.prototype.update = function () {
+      this.counter += this.speed / 5000;
+      this.xPos += (this.sign * this.speed * Math.cos(this.counter)) / 40;
+      this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+      setTranslate3DTransform(
+        this.element,
+        Math.round(this.xPos),
+        Math.round(this.yPos)
+      );
+      if (this.yPos > browserHeight) {
+        this.yPos = -50;
+      }
+    };
+
+    function setTranslate3DTransform(a, c, b) {
+      var d = "translate3d(" + c + "px, " + b + "px, 0)";
+      a.style[transformProperty] = d;
+    }
+
+    function generateSnowflakes() {
+      var b = document.querySelector(".snowflake");
+      var h = b.parentNode;
+      browserWidth = document.documentElement.clientWidth;
+      browserHeight = document.documentElement.clientHeight;
+      for (var d = 0; d < numberOfSnowflakes; d++) {
+        var j = b.cloneNode(true);
+        h.appendChild(j);
+        var e = getPosition(50, browserWidth);
+        var a = getPosition(50, browserHeight);
+        var c = 5 + Math.random() * 40;
+        var g = 4 + Math.random() * 10;
+        var f = new Snowflake(j, g, c, e, a);
+        snowflakes.push(f);
+      }
+      h.removeChild(b);
+      moveSnowflakes();
+    }
+
+    function moveSnowflakes() {
+      for (var b = 0; b < snowflakes.length; b++) {
+        var a = snowflakes[b];
+        a.update();
+      }
+      if (resetPosition) {
+        browserWidth = document.documentElement.clientWidth;
+        browserHeight = document.documentElement.clientHeight;
+        for (var b = 0; b < snowflakes.length; b++) {
+          var a = snowflakes[b];
+          a.xPos = getPosition(50, browserWidth);
+          a.yPos = getPosition(50, browserHeight);
+        }
+        resetPosition = false;
+      }
+      requestAnimationFrame(moveSnowflakes);
+    }
+
+    function getPosition(b, a) {
+      return Math.round(-1 * b + Math.random() * (a + 2 * b));
+    }
+
+    function setResetFlag(a) {
+      resetPosition = true;
+    }
+    //]]>
+  </script>
+  <script>
+    VanillaTilt.init(document.querySelector(".wrapper"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.25,
+      gyroscopeMinAngleX: -45,
+    });
+    var btn = document.querySelector("button");
+    var closeBtn = document.querySelector(".fa-xmark");
+    btn.addEventListener("click", () => {
+      document.querySelector(".wrapper").classList.add("active");
+      btn.style.display = "none";
+    });
+    closeBtn.addEventListener("click", () => {
+      document.querySelector(".wrapper").classList.remove("active");
+      btn.style.display = "block";
+    });
+  </script>
+
+  <script>
+    function fetchDepartments() {
+      fetch(
+        "https://api-gateway-test.apecgroup.net/api/cm/apec-event/department"
+      )
+        .then((response) => response.json())
+        .then((res) => {
+          displayDepartments(res.data);
+        })
+        .catch((error) => console.error("Error fetching departments:", error));
+    }
+
+    function displayDepartments(departments) {
+      const departmentsContainer = document.getElementById(
+        "departmentsContainer"
+      );
+
+      // Xóa các phòng ban cũ trước khi thêm mới
+      departmentsContainer.innerHTML = "";
+
+      // Duyệt qua danh sách phòng ban và thêm chúng vào HTML
+      departments.forEach((department) => {
+        const departmentCard = document.createElement("div");
+        departmentCard.className = "department-card";
+
+        const departmentName = document.createElement("div");
+        departmentName.className = "department-name";
+        departmentName.textContent = department.name;
+
+        // Gắn sự kiện click để hiển thị nhân viên của phòng ban
+        departmentName.onclick = function () {
+          showEmployees(department.name);
+        };
+
+        departmentCard.appendChild(departmentName);
+        departmentsContainer.appendChild(departmentCard);
+      });
+    }
+
+    function showUser(name) {
+      document.querySelector(".wrapper").classList.add("active");
+    }
+
+    function showEmployees(departmentName) {
+      // Ẩn tất cả các containers phòng ban
+      var departmentCards = document.querySelectorAll(".department-card");
+      departmentCards.forEach(function (card) {
+        card.style.display = "none";
+      });
+
+      // Hiển thị container nhân viên của phòng ban được chọn
+      //   var selectedContainer = document.getElementById(departmentName);
+      //   selectedContainer.style.display = "block";
+
+      const employeesContainer = document.getElementById("employeesContainer");
+      // Xóa người cũ trước khi thêm mới
+      employeesContainer.innerHTML = "";
+      fetch(
+        `https://api-gateway-test.apecgroup.net/api/cm/apec-event/user-department?department=${departmentName}`
+      )
+        .then((response) => response.json())
+        .then((res) => {
+          // Gọi hàm để hiển thị dữ liệu nhân viên
+          displayDepartmentData(res.data);
+        })
+        .catch((error) =>
+          console.error("Error fetching department data:", error)
+        );
+    }
+
+    function doesFileExist(urlToFile) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("HEAD", urlToFile, false);
+      xhr.send();
+
+      if (xhr.status == "404") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function displayDepartmentData(res) {
+      const randomWishes = [
+        "Xin gửi lời chúc tốt đẹp nhất tới tất cả “bông hoa xinh đẹp” trong công ty, chúc các chị em trọn vẹn niềm vui và đong đầy hạnh phúc trong Ngày Quốc tế Phụ nữ 8/3.",
+        "Ngày 8/3, chúc một nửa thế giới luôn thành công trong cuộc sống! Chúc bạn luôn duyên dáng và xinh đẹp trong mắt một nửa thế giới còn lại!",
+        "Ngày 8/3, chúc bạn luôn thành công trong cuộc sống. Chúc bạn tôi luôn xinh đẹp và thu hút ánh nhìn của nửa thế giới còn lại.",
+        // Add more wishes as needed
+      ];
+      // Thực hiện các bước để hiển thị dữ liệu
+      res.forEach((item) => {
+        const useImg = document.createElement("img");
+        useImg.className = "img-card";
+
+        const departmentCard = document.createElement("div");
+        departmentCard.className = "employee-card";
+
+        const departmentName = document.createElement("div");
+        departmentName.className = "employee-name";
+        departmentName.textContent = item.name;
+
+        const departmentImage = document.createElement("img");
+        departmentImage.className = "employee-image";
+        departmentImage.src = doesFileExist(
+          `https://s3.apecgroup.net/apecevent/08_03_APEC/${item.code}.png`
+        )
+          ? `https://s3.apecgroup.net/apecevent/08_03_APEC/${item.code}.png`
+          : "https://afamilycdn.com/2019/5/22/unnamed-1-15584967887161053421218.jpg";
+        departmentImage.alt = "No image";
+
+        // Gắn sự kiện click để hiển thị nhân viên của phòng ban
+        departmentCard.onclick = function () {
+          const imgContent = document.createElement("img");
+          imgContent.src = doesFileExist(
+            `https://s3.apecgroup.net/apecevent/08_03_APEC/${item.code}.png`
+          )
+            ? `https://s3.apecgroup.net/apecevent/08_03_APEC/${item.code}.png`
+            : "https://afamilycdn.com/2019/5/22/unnamed-1-15584967887161053421218.jpg";
+
+          // Append the imgContent to .wrapper .image-content
+          const wrapperImageContent = document.querySelector(
+            ".wrapper .imagecontent"
+          );
+          wrapperImageContent.innerHTML = "";
+          wrapperImageContent.appendChild(imgContent);
+          const randomWish =
+            randomWishes[Math.floor(Math.random() * randomWishes.length)];
+          //   showEmployees(item.name);
+          const wrapperContent = document.querySelector(".wrapper .content h1");
+          wrapperContent.textContent = `✉ Gửi, ${item.name}`;
+
+          const loiChuc = document.querySelector(".wrapper .content p");
+          loiChuc.textContent = `${randomWish}💗`;
+
+          document.querySelector(".wrapper").classList.add("active");
+        };
+
+        departmentCard.appendChild(departmentName);
+        departmentsContainer.appendChild(departmentCard);
+        departmentCard.appendChild(departmentImage);
+        // departmentCard.appendChild(imgContent);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchDepartments);
+
+    function goBack() {
+      fetchDepartments();
+      // var departmentCards = document.querySelectorAll(".department-card");
+      // departmentCards.forEach(function (card) {
+      //   card.style.display = "block";
+      // });
+
+      // var employeeContainers = document.querySelectorAll(".employees-card");
+      // employeeContainers.forEach(function (container) {
+      //   container.style.display = "none";
+      // });
+    }
+  </script>
+
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      tick();
+    });
+  </script> -->
+</html>
