@@ -41,18 +41,11 @@
 </style>
 
 <body>
-    <!-- <audio controls autoplay loop preload="auto">
-      <source src="./Nhạc-8-3.mp3" /> 
-    </audio> -->
 
-    <audio id="myAudio" loop preload="auto" onload="autoAudio()">
-      <source src="./Nhạc-8-3.mp3" /> 
-  </audio>
+    <audio id="myAudio" preload="none" autoplay>
+      <source src="fileAudio.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- <audio autoplay src="Nhạc-8-3.mp3" loop preload="auto"></audio> -->
-
-    <!-- <iframe src="./Nhạc-8-3.mp3" allow="autoplay" style="display:none" id="iframeAudio">
-    </iframe> -->
 
     <div class="back-button" onclick="goBack()">Quay lại</div>
 
@@ -64,6 +57,8 @@
         <h2>Ngày hôm nay là 1 ngày tuyệt vời, chúng tôi những người đàn ông đại diện cho phái mạnh APEC TECH nói riêng và APEC GROUP nói chung xin được gửi đến những lời chúc tốt đẹp dành tặng đến những cô gái xinh đẹp nhất. Hãy tìm đến hòm thư của riêng
             mình để nhận lấy tấm lòng của anh em chúng tôi nhé!</h3>
     </div>
+
+    <div class="box-audio" onclick="playAudio()">Hãy bắt đầu với một chút âm nhạc nhé ➡️ 🎁</div>
 
     <div class="wrapper">
         <div class="box-header">
@@ -326,7 +321,6 @@
     function displayDepartmentData(res) {
         const randomWishes = [
             "Ngày của phụ nữ, bạn không chỉ là một người phụ nữ, mà còn là nguồn cảm hứng và niềm tự hào của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn tỏa sáng như một viên ngọc quý trong đám đông, với vẻ đẹp không thể tìm thấy ở bất cứ nơi nào khác.",
-            "Trong ngày này, tôi muốn dành một lời chúc đặc biệt cho bạn - người phụ nữ mạnh mẽ, độc lập và quyến rũ nhất mà tôi từng gặp. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn giữ được lửa nhiệt và bản lĩnh của mình, và không ngừng đi đến những đỉnh cao mới trong cuộc sống và sự nghiệp.",
             "Ngày hôm nay, tôi muốn gửi tới bạn một lời chúc ấm áp và ý nghĩa nhân ngày phụ nữ. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn nhận ra rằng bạn là một người phụ nữ đặc biệt, với một trái tim lớn và một tinh thần vững vàng như đá.",
             "Ngày của phụ nữ, bạn không chỉ là một người phụ nữ, mà còn là nguồn cảm hứng và niềm tự hào của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn tỏa sáng như một viên ngọc quý trong đám đông, với vẻ đẹp không thể tìm thấy ở bất cứ nơi nào khác.",
             "Trong ngày này, tôi muốn dành một lời chúc đặc biệt cho bạn - người phụ nữ mạnh mẽ, độc lập và quyến rũ nhất mà tôi từng gặp. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn giữ được lửa nhiệt và bản lĩnh của mình, và không ngừng đi đến những đỉnh cao mới trong cuộc sống và sự nghiệp.",
@@ -345,7 +339,27 @@
 
             "Ngày hôm nay, tôi muốn nói rằng bạn là một phần quan trọng trong cuộc sống của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn nhận ra rằng bạn xứng đáng nhận được tất cả những điều tốt đẹp nhất trong cuộc sống này.",
             "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ duy nhất mà tôi muốn chia sẻ mọi khoảnh khắc đẹp và khó khăn của cuộc sống. Hy vọng bạn sẽ luôn tự tin và kiên định trên con đường của mình và không ngừng phát triển và trưởng thành.",
-            // Add more wishes as needed
+
+
+            "Ngày của phụ nữ, bạn là nguồn động viên và niềm tự hào của tôi. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn tỏa sáng như một ngôi sao trong bầu trời đêm, với vẻ đẹp và tâm hồn rạng ngời.",
+
+            "Trong ngày đặc biệt này, tôi muốn gửi đến bạn một lời chúc ý nghĩa và sâu sắc nhất. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn giữ vững niềm tin và sự kiên định trong mọi tình huống.",
+
+            "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ tuyệt vời nhất mà tôi từng gặp, và tôi luôn tự hào khi có bạn bên cạnh. Hy vọng bạn sẽ luôn tự tin và mạnh mẽ trước mọi thử thách.",
+
+            "Ngày hôm nay, tôi muốn nói rằng bạn là một phần không thể thiếu trong cuộc sống và sự nghiệp của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn biết ơn và trân trọng bản thân mình, và không ngừng tiến lên phía trước.",
+
+            "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ đặc biệt nhất trong tôi trái tim, và tôi muốn dành lời chúc này để tôn vinh bạn và tình bạn đẹp đẽ mà chúng ta đã chia sẻ. Hy vọng bạn sẽ luôn hạnh phúc và thành công trong mọi điều bạn làm.",
+
+            "Trong ngày này, tôi muốn nói rằng bạn là một phần quan trọng trong cuộc sống của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn giữ vững niềm tin và sự quyết tâm, và không ngừng phấn đấu để đạt được mọi ước mơ và mục tiêu của mình.",
+
+            "Ngày của phụ nữ, bạn là người phụ nữ duy nhất trong tôi trái tim. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn nhận ra giá trị và sức mạnh của mình và không ngừng tỏa sáng như một ngôi sao trên bầu trời cuộc đời.",
+
+            "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ đẹp nhất trong tôi mắt, không chỉ về vẻ ngoài mà còn về tâm hồn và tình cảm. Hy vọng bạn sẽ luôn tự tin và kiên định trước mọi thách thức.",
+
+            "Ngày hôm nay, tôi muốn nói rằng bạn là người phụ nữ duy nhất mà tôi muốn dành cả cuộc đời của mình. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn hạnh phúc và thành công trong mọi lĩnh vực của cuộc sống.",
+
+            "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ đặc biệt nhất trong tôi cuộc sống, và tôi rất may mắn khi có bạn bên cạnh. Hy vọng bạn sẽ luôn biết ơn và trân trọng mọi khoảnh khắc đẹp trong cuộc sống của mình.",
         ];
         // Thực hiện các bước để hiển thị dữ liệu
         res.forEach((item) => {
@@ -431,14 +445,13 @@
         fetchDepartments();
     }
 
-    function playAudio() {
-        // alert(1)
-        var audio = document.getElementById("myAudio");
-        audio.play();
-        console.log("Audio loaded");
-    }
+    // function playAudio() {
+    //     var audio = document.getElementById("myAudio");
+    //     audio.play();
+    //     console.log("Audio loaded");
+    // }
 
-    window.addEventListener('load', playAudio)
+    // window.addEventListener('load', playAudio)
 
     // autoAudio();
 
@@ -467,6 +480,14 @@
     //     //     }
     //     // };
     // }
+</script>
+
+<script>
+    var audio = document.getElementById('myAudio');
+
+    function playAudio() {
+        audio.play();
+    }
 </script>
 
 </html>

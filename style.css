@@ -80,7 +80,7 @@ body {
         font-size: 16px;
     }
     .wrapper.active p {
-        font-size: 25px;
+        font-size: 20px;
     }
     .imagecontent img {
         width: auto;
@@ -276,7 +276,7 @@ button:hover p {
     border-radius: 10px; */
     position: relative;
     width: 60%;
-    height: 80%;
+    height: 95%;
     background: #fff;
     opacity: 0;
     pointer-events: none;
@@ -303,7 +303,7 @@ button:hover p {
     margin-top: 10px;
     font-family: "Dancing Script", cursive;
     padding: 0 15px;
-    font-size: 26px;
+    font-size: 23px;
     text-align: center;
     -webkit-text-fill-color: rgba(0, 200, 200, 0.1);
     -webkit-background-clip: text;
@@ -449,6 +449,7 @@ button:hover p {
     gap: 15px;
     width: 250px;
     animation: fadeInDepartment 3s ease-out;
+    cursor: pointer;
 }
 
 .employee-card:hover {
@@ -533,9 +534,9 @@ button:hover p {
     height: 35vh;
     object-fit: cover;
     border-radius: 10px; */
-    max-width: 50vw;
+    max-width: 40vw;
     width: auto;
-    height: 65vh;
+    height: 70vh;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -592,4 +593,24 @@ button:hover p {
     display: inline-block;
     animation: move 20s infinite linear;
     color: #ebb55f;
+}
+
+.box-audio {
+    padding: 20px 50px 50px 50px;
+    font-family: "Calligraffitti", cursive;
+    font-weight: 300;
+    font-size: 20px;
+    text-shadow: -15px 5px 20px #ced0d3;
+    top: 50%;
+    left: 50%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: rgb(46 62 72);
+    animation: slideInDown 2s ease-out;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.box-audio:hover {
+    transform: scale(1.05);
 }
