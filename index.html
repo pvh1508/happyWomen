@@ -60,6 +60,10 @@
 
     <div class="box-audio" onclick="playAudio()">Hãy bắt đầu với một chút âm nhạc nhé ➡️ 🎁</div>
 
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Nhập phòng ban...">
+        <div onclick="search()" class="btn-search">Tìm kiếm</div>
+    </div>
 
     <div class="wrapper">
         <div class="box-header">
@@ -238,13 +242,17 @@
 </script>
 
 <script>
+    var departmentData = [];
+
     function fetchDepartments() {
         fetch(
                 "https://api-gateway-test.apecgroup.net/api/cm/apec-event/department"
             )
             .then((response) => response.json())
             .then((res) => {
-                displayDepartments(res.data);
+
+                departmentData = res.data;
+                displayDepartments(departmentData);
             })
             .catch((error) => console.error("Error fetching departments:", error));
     }
@@ -490,6 +498,23 @@
 
     function playAudio() {
         audio.play();
+    }
+</script>
+
+<script>
+    function search() {
+        const searchText = document.getElementById("searchInput").value;
+        const searchedData = departmentData.filter(x => removeSign(x.name).indexOf(removeSign(searchText)) > -1);
+        displayDepartments(searchedData);
+    }
+
+    function removeSign(str) {
+        return str
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .toLowerCase();
     }
 </script>
 
