@@ -84,7 +84,7 @@ body {
     }
     .imagecontent img {
         width: auto;
-        height: 45vh !important;
+        height: 38vh !important;
         object-fit: cover;
         border-radius: 10px;
         margin-top: 12px;
