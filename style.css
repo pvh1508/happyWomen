@@ -74,7 +74,7 @@ body {
         pointer-events: none;
         border-radius: 10px;
         margin-left: 16px;
-        padding-top: 16px;
+        /* padding-top: 16px; */
         overflow-y: scroll;
         margin-bottom: 16px;
         font-size: 16px;
@@ -285,8 +285,9 @@ button:hover p {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: nowrap;
+    gap: 10px;
 }
 
 .content h1 {
