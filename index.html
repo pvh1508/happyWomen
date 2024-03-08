@@ -337,9 +337,7 @@
 
             "Trong ngày này, tôi muốn gửi đến bạn một lời chúc ấm áp và ý nghĩa nhất. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn tự tin và kiên nhẫn trước mọi thử thách, và không ngừng bước đi với niềm tin và hy vọng.",
 
-            "Ngày hôm nay, tôi muốn nói rằng bạn là một phần quan trọng trong cuộc sống của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn nhận ra rằng bạn xứng đáng nhận được tất cả những điều tốt đẹp nhất trong cuộc sống này.",
             "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ duy nhất mà tôi muốn chia sẻ mọi khoảnh khắc đẹp và khó khăn của cuộc sống. Hy vọng bạn sẽ luôn tự tin và kiên định trên con đường của mình và không ngừng phát triển và trưởng thành.",
-
 
             "Ngày của phụ nữ, bạn là nguồn động viên và niềm tự hào của tôi. Chúc mừng ngày 8/3, bạn của tôi! Hy vọng bạn sẽ luôn tỏa sáng như một ngôi sao trong bầu trời đêm, với vẻ đẹp và tâm hồn rạng ngời.",
 
@@ -348,8 +346,6 @@
             "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ tuyệt vời nhất mà tôi từng gặp, và tôi luôn tự hào khi có bạn bên cạnh. Hy vọng bạn sẽ luôn tự tin và mạnh mẽ trước mọi thử thách.",
 
             "Ngày hôm nay, tôi muốn nói rằng bạn là một phần không thể thiếu trong cuộc sống và sự nghiệp của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn biết ơn và trân trọng bản thân mình, và không ngừng tiến lên phía trước.",
-
-            "Chúc mừng ngày của phụ nữ, bạn của tôi! Bạn là người phụ nữ đặc biệt nhất trong tôi trái tim, và tôi muốn dành lời chúc này để tôn vinh bạn và tình bạn đẹp đẽ mà chúng ta đã chia sẻ. Hy vọng bạn sẽ luôn hạnh phúc và thành công trong mọi điều bạn làm.",
 
             "Trong ngày này, tôi muốn nói rằng bạn là một phần quan trọng trong cuộc sống của tôi. Chúc mừng ngày 8/3, bạn! Hy vọng bạn sẽ luôn giữ vững niềm tin và sự quyết tâm, và không ngừng phấn đấu để đạt được mọi ước mơ và mục tiêu của mình.",
 
@@ -381,6 +377,10 @@
                 `https://s3.apecgroup.net/apecevent/08_03_APEC/${item.code}.png` :
                 "https://s3.apecgroup.net/apecevent/08_03_APEC/0803default.png";
             departmentImage.alt = "No image";
+
+            const xemThem = document.createElement("div");
+            xemThem.className = "box-more";
+            xemThem.textContent = "Xem thêm";
 
             // Gắn sự kiện click để hiển thị nhân viên của phòng ban
             departmentCard.onclick = function() {
@@ -423,8 +423,10 @@
             };
 
             departmentCard.appendChild(departmentName);
+
             departmentsContainer.appendChild(departmentCard);
             departmentCard.appendChild(departmentImage);
+            departmentCard.appendChild(xemThem);
             // departmentCard.appendChild(imgContent);
         });
     }
