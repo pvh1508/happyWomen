@@ -102,8 +102,11 @@ body {
         padding: 10px;
     }
     .search-container {
-        flex-direction: column;
-        align-items: center;
+        /* flex-direction: column;
+        align-items: center; */
+    }
+    .search-container input {
+        width: 200px !important;
     }
 }
 
